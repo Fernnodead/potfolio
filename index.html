@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Имя Фамилия — Digital-специалист</title>
+  <meta name="description" content="Имя Фамилия — специалист по [твоя специализация]. Помогаю [кому] решать [какие задачи] через [что ты делаешь]. Портфолио и контакты." />
+
+  <!-- OG-теги для соцсетей -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Имя Фамилия — Digital-специалист" />
+  <meta property="og:description" content="Помогаю бизнесам и людям через [твоя экспертиза]." />
+  <meta property="og:image" content="assets/img/og-preview-placeholder.jpg" />
+  <meta property="og:url" content="https://your-domain.ru" />
+
+  <!-- Шрифт (можешь заменить на JetBrains Mono / Space Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="is-loading">
+  <!-- Фоновый шум поверх всей страницы -->
+  <div class="site-noise"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-block">
+        <!-- ИМЯ / ЛОГО -->
+        <span class="logo-mark">▣</span>
+        <span class="logo-text">Имя Фамилия</span>
+      </div>
+      <nav class="site-nav">
+        <a href="#about">Обо мне</a>
+        <a href="#services">Чем помогаю</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <!-- ИМЯ И СПЕЦИАЛИЗАЦИЯ -->
+          <p class="hero-label">PROFILE // ANALOG-PUNK MODE</p>
+          <h1>
+            Имя<br />
+            Фамилия
+          </h1>
+          <p class="hero-role">Специалист по [твоя специализация]</p>
+          <!-- КОРОТКИЙ СЛОГАН -->
+          <p class="hero-tagline">
+            Помогаю [целевой аудитории] превращать шум в понятные решения: от стратегии до реализованных кейсов.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contacts" class="btn btn-primary btn-glitch">
+              <span class="btn-label">Связаться со мной</span>
+              <span class="btn-shadow" aria-hidden="true">Связаться со мной</span>
+            </a>
+            <a href="#cases" class="link-inline">Смотреть кейсы ↓</a>
+          </div>
+        </div>
+
+        <!-- ПОРТРЕТ / ИЛЛЮСТРАЦИЯ -->
+        <figure class="hero-portrait">
+          <!-- ЗАМЕНИ ЭТУ КАРТИНКУ НА СВОЮ -->
+          <img src="assets/img/portrait-placeholder.jpg" alt="Монохромный портрет в стиле analog-punk" />
+          <figcaption>Signal: stable // Noise: controlled</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ОБО МНЕ -->
+    <section class="section" id="about">
+      <div class="container">
+        <header class="section-header">
+          <h2>Обо мне</h2>
+          <p class="section-subtitle">Кто я и как думаю о работе</p>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <!-- 3–5 ПРЕДЛОЖЕНИЙ О СЕБЕ -->
+            <p>
+              Я — [роль/позиция], работаю с [тип клиентов или сфер] и помогаю им решать задачи на стыке
+              стратегии, визуала и цифровых продуктов. Собираю понятные, устойчивые решения
+              вместо визуального шума.
+            </p>
+            <p>
+              Люблю системы, прозрачные процессы и аккуратные интерфейсы. В работе комбинирую
+              цифровые инструменты и аналоговое мышление: заметки, схемы, черновики.
+            </p>
+          </div>
+
+          <div class="skills-panel">
+            <h3 class="skills-title">Навыки / Стек</h3>
+            <ul class="skills-list">
+              <!-- ДОБАВЬ / УДАЛИ ПУНКТЫ ПОД СЕБЯ -->
+              <li class="skill-item">
+                <span class="skill-icon">◎</span>
+                <span class="skill-label">Стратегия и позиционирование</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-icon">▥</span>
+                <span class="skill-label">UX / UI концепция</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-icon">▧</span>
+                <span class="skill-label">Дизайн лендингов и интерфейсов</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-icon">⇄</span>
+                <span class="skill-label">Аналитика и гипотезы</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-icon">▤</span>
+                <span class="skill-label">Работа с командой / подрядчиками</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЧЕМ МОГУ ПОМОЧЬ -->
+    <section class="section section-alt" id="services">
+      <div class="container">
+        <header class="section-header">
+          <h2>Чем могу помочь</h2>
+          <p class="section-subtitle">Форматы работы и типовые задачи</p>
+        </header>
+
+        <div class="services-grid">
+          <!-- КАРТОЧКИ УСЛУГ — НАСТРОЙ ПОД СЕБЯ -->
+          <article class="service-card">
+            <div class="service-icon">▣</div>
+            <h3>Лендинги «под задачу»</h3>
+            <p>
+              От идеи до структуры, прототипов и визуала. Сайт, который решает конкретную
+              бизнес-цель, а не просто «красиво выглядит».
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">▦</div>
+            <h3>Продуктовая визуальная система</h3>
+            <p>
+              Собираю визуальный язык проекта: цвета, типографика, паттерны, UI-компоненты,
+              чтобы всё работало как единое целое.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">▤</div>
+            <h3>Аудит текущего решения</h3>
+            <p>
+              Разбор сайта или продукта: где теряется внимание, что мешает конверсии, что можно
+              поправить без полного редизайна.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">↯</div>
+            <h3>Дизайн для спецпроектов</h3>
+            <p>
+              Визуальные концепции для спецпроектов, кампаний и лимитированных запусков — когда
+              нужно чуть больше характера.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- КЕЙСЫ -->
+    <section class="section" id="cases">
+      <div class="container">
+        <header class="section-header">
+          <h2>Кейсы</h2>
+          <p class="section-subtitle">Несколько историй, где шум стал системой</p>
+        </header>
+
+        <div class="cases-list">
+          <!-- КЕЙС 1 -->
+          <article class="case-item">
+            <header class="case-header">
+              <h3>Кейс #1 — лендинг для онлайн-курса</h3>
+              <p class="case-tagline">Рост конверсии с рекламного трафика и ясная структура оффера.</p>
+            </header>
+
+            <div class="case-body">
+              <div class="case-text">
+                <p><strong>Задача.</strong> У заказчика был курс с хорошими отзывами, но сайт выглядел как
+                  набор несвязанных блоков. Сложно понять, зачем курс и для кого он.</p>
+                <p><strong>Что сделал.</strong> Пересобрал структуру страницы, выделил ключевые смыслы, добавил
+                  понятные сценарии для разных аудиторий, выстроил визуальную иерархию.</p>
+                <p><strong>Результат.</strong> Конверсия из клика в заявку выросла на ~25%, уменьшилось количество
+                  уточняющих вопросов в личных сообщениях.</p>
+              </div>
+
+              <figure class="case-media">
+                <!-- ЗАМЕНИ НА СКРИН СВОЕГО ПРОЕКТА -->
+                <img src="assets/img/case-01-placeholder.jpg" alt="Скриншот лендинга для онлайн-курса" />
+                <figcaption>Фрагмент экрана // шум сглажен, акценты понятны</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <div class="cases-divider"></div>
+
+          <!-- КЕЙС 2 -->
+          <article class="case-item">
+            <header class="case-header">
+              <h3>Кейс #2 — визуальный язык для сервиса</h3>
+              <p class="case-tagline">От разрозненных интерфейсов к цельной системе.</p>
+            </header>
+
+            <div class="case-body">
+              <div class="case-text">
+                <p><strong>Задача.</strong> У продукта было несколько интерфейсов, собранных разными дизайнерами
+                  на разных этапах. Никакой единой логики и ощущения бренда.</p>
+                <p><strong>Что сделал.</strong> Проанализировал текущие экраны, собрал UI-кисть, настроил сетку,
+                  цветовые токены, типографику и базовые компоненты.</p>
+                <p><strong>Результат.</strong> Команда стала быстрее собирать новые экраны, пользователи отметили,
+                  что «сервис стал понятнее и ровнее».</p>
+              </div>
+
+              <figure class="case-media">
+                <!-- ЗАМЕНИ НА СКРИН СВОЕГО ПРОЕКТА -->
+                <img src="assets/img/case-02-placeholder.jpg" alt="Скриншот интерфейсов сервиса" />
+                <figcaption>Фрагменты интерфейса // единый язык вместо коллажа</figcaption>
+              </figure>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section class="section section-alt" id="contacts">
+      <div class="container">
+        <header class="section-header">
+          <h2>Контакты</h2>
+          <p class="section-subtitle">Выбор канала — за тобой</p>
+        </header>
+
+        <div class="contacts-grid">
+          <!-- Email -->
+          <a class="contact-card" href="mailto:you@example.com">
+            <div class="contact-frame">
+              <div class="contact-label">EMAIL // PRIMARY CHANNEL</div>
+              <div class="contact-value">you@example.com</div>
+              <div class="contact-meta">Ответ обычно в течение 24 часов</div>
+            </div>
+          </a>
+
+          <!-- Telegram -->
+          <a class="contact-card" href="https://t.me/yourusername" target="_blank" rel="noopener">
+            <div class="contact-frame">
+              <div class="contact-label">TELEGRAM // DIRECT LINE</div>
+              <div class="contact-value">@yourusername</div>
+              <div class="contact-meta">Для быстрых вопросов и рабочих переписок</div>
+            </div>
+          </a>
+
+          <!-- WhatsApp -->
+          <a class="contact-card" href="https://wa.me/70000000000" target="_blank" rel="noopener">
+            <div class="contact-frame">
+              <div class="contact-label">WHATSAPP // ALT CHANNEL</div>
+              <div class="contact-value">+7 000 000-00-00</div>
+              <div class="contact-meta">Только по делу, без рассылок 🙃</div>
+            </div>
+          </a>
+
+          <!-- GitHub / LinkedIn / Behance -->
+          <a class="contact-card" href="https://github.com/yourprofile" target="_blank" rel="noopener">
+            <div class="contact-frame">
+              <div class="contact-label">GITHUB // CODE TRACE</div>
+              <div class="contact-value">github.com/yourprofile</div>
+              <div class="contact-meta">Репозитории, pet-проекты, эксперименты</div>
+            </div>
+          </a>
+
+          <a class="contact-card" href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">
+            <div class="contact-frame">
+              <div class="contact-label">LINKEDIN // NETWORK</div>
+              <div class="contact-value">linkedin.com/in/yourprofile</div>
+              <div class="contact-meta">Профессиональные контакты и опыт</div>
+            </div>
+          </a>
+
+          <a class="contact-card" href="https://www.behance.net/yourprofile" target="_blank" rel="noopener">
+            <div class="contact-frame">
+              <div class="contact-label">BEHANCE // VISUAL FEED</div>
+              <div class="contact-value">behance.net/yourprofile</div>
+              <div class="contact-meta">Подборка визуальных проектов</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="js-year"></span> Имя Фамилия</span>
+      <span class="footer-meta">Built in analog-punk minimal // HTML · CSS · JS</span>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
