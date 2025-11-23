@@ -4,31 +4,730 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Имя Фамилия — Digital-специалист</title>
-  <meta name="description" content="Имя Фамилия — специалист по [твоя специализация]. Помогаю [кому] решать [какие задачи] через [что ты делаешь]. Портфолио и контакты." />
+  <title>Имя Фамилия — Product / Методист</title>
+  <meta name="description" content="Имя Фамилия — product / методист. Помогаю собирать системные продукты, курсы и процессы: от структуры до реализации." />
 
-  <!-- OG-теги для соцсетей -->
+  <!-- OG -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Имя Фамилия — Digital-специалист" />
-  <meta property="og:description" content="Помогаю бизнесам и людям через [твоя экспертиза]." />
+  <meta property="og:title" content="Имя Фамилия — Product / Методист" />
+  <meta property="og:description" content="Помогаю командам и авторам собирать работающие продукты и курсы." />
   <meta property="og:image" content="assets/img/og-preview-placeholder.jpg" />
   <meta property="og:url" content="https://your-domain.ru" />
 
-  <!-- Шрифт (можешь заменить на JetBrains Mono / Space Mono) -->
+  <!-- Шрифт -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    :root {
+      --bg: #070707;
+      --bg-alt: #101010;
+      --text: #f2f2f0;
+      --text-muted: #b0b0aa;
+      --accent: #b5ff2f;
+      --accent-soft: #3effc9;
+      --border-subtle: #2a2a2a;
+      --border-strong: #3b3b3b;
+
+      --font-main: 'IBM Plex Mono', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --radius-s: 6px;
+      --radius-m: 10px;
+      --radius-l: 16px;
+
+      --transition-fast: 160ms ease-out;
+      --transition-medium: 220ms ease-out;
+
+      --noise-opacity: 0.12;
+    }
+
+    *,*::before,*::after{box-sizing:border-box;}
+
+    html{scroll-behavior:smooth;}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:var(--font-main);
+      background-color:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      position:relative;
+      overflow-x:hidden;
+    }
+
+    .site-noise{
+      pointer-events:none;
+      position:fixed;
+      inset:0;
+      z-index:0;
+      opacity:var(--noise-opacity);
+      mix-blend-mode:soft-light;
+      background-image:
+        repeating-linear-gradient(0deg,rgba(255,255,255,0.06)0px,rgba(255,255,255,0.06)1px,transparent1px,transparent2px),
+        repeating-linear-gradient(90deg,rgba(0,0,0,0.35)0px,rgba(0,0,0,0.35)1px,transparent1px,transparent2px);
+      animation:noiseShift 900ms steps(3,end) infinite;
+    }
+
+    @keyframes noiseShift{
+      0%{transform:translate3d(0,0,0);}
+      25%{transform:translate3d(-1px,1px,0);}
+      50%{transform:translate3d(1px,-0.5px,0);}
+      75%{transform:translate3d(-0.5px,-1px,0);}
+      100%{transform:translate3d(0,0,0);}
+    }
+
+    .container{
+      width:100%;
+      max-width:1120px;
+      margin:0 auto;
+      padding:0 20px;
+      position:relative;
+      z-index:1;
+    }
+
+    body.is-loading main,
+    body.is-loading .site-header,
+    body.is-loading .site-footer{
+      opacity:0;
+      transform:translateY(8px);
+    }
+
+    body:not(.is-loading) main,
+    body:not(.is-loading) .site-header,
+    body:not(.is-loading) .site-footer{
+      opacity:1;
+      transform:translateY(0);
+      transition:opacity 550ms ease-out,transform 550ms ease-out;
+    }
+
+    /* HEADER */
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:linear-gradient(to bottom,rgba(7,7,7,0.96),rgba(7,7,7,0.88));
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--border-subtle);
+    }
+
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:64px;
+    }
+
+    .logo-block{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:13px;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:var(--text-muted);
+    }
+
+    .logo-mark{
+      display:inline-flex;
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      border:1px solid var(--accent);
+      align-items:center;
+      justify-content:center;
+      font-size:10px;
+    }
+
+    .site-nav{
+      display:flex;
+      gap:16px;
+      font-size:13px;
+    }
+
+    .site-nav a{
+      position:relative;
+      text-decoration:none;
+      color:var(--text-muted);
+      padding:4px 0;
+      transition:color var(--transition-fast);
+    }
+
+    .site-nav a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      height:1px;
+      width:0;
+      background:linear-gradient(90deg,var(--accent),transparent);
+      transition:width var(--transition-medium);
+    }
+
+    .site-nav a:hover{
+      color:var(--text);
+    }
+
+    .site-nav a:hover::after{
+      width:100%;
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      padding:80px 0 72px;
+      background:radial-gradient(circle at top left,#171717 0,#040404 55%);
+    }
+
+    .hero-inner{
+      display:grid;
+      grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+      gap:40px;
+      align-items:center;
+    }
+
+    .hero-label{
+      font-size:11px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:var(--accent-soft);
+      margin:0 0 16px;
+    }
+
+    .hero h1{
+      margin:0 0 12px;
+      font-size:clamp(38px,6vw,56px);
+      line-height:1.1;
+      letter-spacing:0.05em;
+      text-transform:uppercase;
+    }
+
+    .hero-role{
+      font-size:16px;
+      color:var(--accent);
+      margin:0 0 16px;
+    }
+
+    .hero-tagline{
+      font-size:14px;
+      color:var(--text-muted);
+      max-width:480px;
+      margin:0 0 24px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      align-items:center;
+    }
+
+    .link-inline{
+      font-size:13px;
+      color:var(--accent-soft);
+      text-decoration:none;
+      border-bottom:1px dashed var(--accent-soft);
+      padding-bottom:2px;
+      transition:border-color var(--transition-fast),color var(--transition-fast);
+    }
+
+    .link-inline:hover{
+      color:var(--accent);
+      border-bottom-style:solid;
+    }
+
+    .btn{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 20px;
+      border-radius:var(--radius-m);
+      border:1px solid var(--accent);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      text-decoration:none;
+      overflow:hidden;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:radial-gradient(circle at 20% 0%,#1f2400,#050505 60%);
+      color:var(--text);
+    }
+
+    .btn-glitch .btn-label,
+    .btn-glitch .btn-shadow{
+      position:relative;
+      z-index:1;
+    }
+
+    .btn-glitch .btn-shadow{
+      position:absolute;
+      left:0;
+      right:0;
+      transform:translate(2px,-2px);
+      opacity:0;
+      clip-path:inset(0 0 50% 0);
+      mix-blend-mode:screen;
+      color:var(--accent-soft);
+      pointer-events:none;
+    }
+
+    .btn-glitch::before,
+    .btn-glitch::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:var(--radius-m);
+      border:1px solid var(--accent-soft);
+      opacity:0;
+      mix-blend-mode:screen;
+    }
+
+    .btn-glitch::before{clip-path:inset(0 52% 0 0);}
+    .btn-glitch::after{clip-path:inset(0 0 0 52%);}
+
+    .btn-glitch:hover .btn-shadow{
+      animation:btnGlitchText 260ms steps(2,end) forwards;
+    }
+
+    .btn-glitch:hover::before,
+    .btn-glitch:hover::after{
+      animation:btnGlitchFrame 260ms steps(2,end) forwards;
+    }
+
+    @keyframes btnGlitchText{
+      0%{opacity:0;transform:translate(0,0);}
+      50%{opacity:1;transform:translate(-2px,1px);}
+      100%{opacity:0;transform:translate(1px,-1px);}
+    }
+
+    @keyframes btnGlitchFrame{
+      0%{opacity:0;transform:translate(0,0);}
+      50%{opacity:1;transform:translate(-2px,1px);}
+      100%{opacity:0;transform:translate(2px,-1px);}
+    }
+
+    .hero-portrait{
+      position:relative;
+      margin:0;
+      border-radius:var(--radius-l);
+      border:1px solid var(--border-strong);
+      overflow:hidden;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.5)),
+        repeating-linear-gradient(180deg,rgba(255,255,255,0.06)0px,rgba(255,255,255,0.02)1px,transparent1px,transparent3px);
+    }
+
+    .hero-portrait img{
+      display:block;
+      width:100%;
+      height:auto;
+      filter:grayscale(100%) contrast(1.1);
+      mix-blend-mode:screen;
+      opacity:0.92;
+      transform:scale(1.02);
+    }
+
+    .hero-portrait::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:radial-gradient(circle at 10% 0%,rgba(181,255,47,0.2),transparent60%);
+      mix-blend-mode:screen;
+      opacity:0.7;
+    }
+
+    .hero-portrait::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:repeating-linear-gradient(180deg,rgba(0,0,0,0.4)0px,rgba(0,0,0,0.4)1px,transparent1px,transparent3px);
+      mix-blend-mode:soft-light;
+      opacity:0.4;
+    }
+
+    .hero-portrait figcaption{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:6px;
+      padding:4px 10px 6px;
+      background:linear-gradient(90deg,rgba(0,0,0,0.85),transparent);
+      font-size:11px;
+      color:var(--text-muted);
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+    }
+
+    /* SECTIONS */
+
+    .section{
+      position:relative;
+      padding:72px 0;
+      background:var(--bg);
+    }
+
+    .section-alt{background:var(--bg-alt);}
+
+    .section-header{
+      margin-bottom:32px;
+      border-bottom:1px solid var(--border-subtle);
+      padding-bottom:16px;
+    }
+
+    .section-header h2{
+      margin:0 0 6px;
+      font-size:20px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+    }
+
+    .section-subtitle{
+      margin:0;
+      font-size:13px;
+      color:var(--text-muted);
+    }
+
+    /* ABOUT */
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1.1fr);
+      gap:32px;
+      align-items:flex-start;
+    }
+
+    .about-text p{
+      margin:0 0 14px;
+      font-size:14px;
+      color:var(--text-muted);
+    }
+
+    .skills-panel{
+      padding:16px 16px 14px;
+      border-radius:var(--radius-m);
+      border:1px solid var(--border-strong);
+      background:
+        linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.6)),
+        repeating-linear-gradient(180deg,rgba(255,255,255,0.06)0px,rgba(255,255,255,0.02)1px,transparent1px,transparent3px);
+    }
+
+    .skills-title{
+      margin:0 0 10px;
+      font-size:13px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:var(--accent-soft);
+    }
+
+    .skills-list{list-style:none;padding:0;margin:0;}
+
+    .skill-item{
+      display:flex;
+      align-items:center;
+      font-size:13px;
+      padding:6px 4px;
+      border-bottom:1px dashed rgba(255,255,255,0.06);
+    }
+
+    .skill-item:last-child{border-bottom:none;}
+
+    .skill-icon{
+      width:22px;
+      font-size:13px;
+      color:var(--accent);
+    }
+
+    .skill-label{color:var(--text-muted);}
+
+    /* SERVICES */
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:18px;
+    }
+
+    .service-card{
+      position:relative;
+      padding:16px 16px 14px;
+      border-radius:var(--radius-m);
+      border:1px solid var(--border-subtle);
+      background:
+        radial-gradient(circle at top left,rgba(181,255,47,0.06),transparent55%),
+        linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.8));
+      overflow:hidden;
+      transition:border-color var(--transition-fast),transform var(--transition-fast);
+    }
+
+    .service-card::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:1px;
+      background-image:repeating-linear-gradient(90deg,rgba(181,255,47,0.0)0,rgba(181,255,47,0.7)10px,rgba(181,255,47,0.0)20px);
+      transform-origin:left;
+      transform:scaleX(0);
+      transition:transform 260ms ease-out;
+    }
+
+    .service-card:hover{
+      border-color:var(--accent-soft);
+      transform:translateY(-2px);
+    }
+
+    .service-card:hover::after{transform:scaleX(1);}
+
+    .service-icon{
+      font-size:18px;
+      margin-bottom:8px;
+      color:var(--accent);
+    }
+
+    .service-card h3{
+      margin:0 0 6px;
+      font-size:15px;
+    }
+
+    .service-card p{
+      margin:0;
+      font-size:13px;
+      color:var(--text-muted);
+    }
+
+    /* CASES */
+
+    .cases-list{
+      display:flex;
+      flex-direction:column;
+      gap:36px;
+    }
+
+    .case-item{padding-bottom:18px;}
+
+    .case-header h3{
+      margin:0 0 4px;
+      font-size:17px;
+    }
+
+    .case-tagline{
+      margin:0 0 14px;
+      font-size:13px;
+      color:var(--text-muted);
+    }
+
+    .case-body{
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1.2fr);
+      gap:24px;
+    }
+
+    .case-text p{
+      margin:0 0 10px;
+      font-size:13px;
+      color:var(--text-muted);
+    }
+
+    .case-media{
+      position:relative;
+      margin:0;
+      border-radius:var(--radius-m);
+      overflow:hidden;
+      border:1px solid var(--border-strong);
+      background:
+        linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.8)),
+        repeating-linear-gradient(180deg,rgba(255,255,255,0.07)0px,rgba(255,255,255,0.02)1px,transparent1px,transparent3px);
+    }
+
+    .case-media img{
+      display:block;
+      width:100%;
+      height:auto;
+      filter:grayscale(100%) contrast(1.05);
+      opacity:0.95;
+    }
+
+    .case-media::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      mix-blend-mode:soft-light;
+      opacity:0.4;
+      background:repeating-linear-gradient(0deg,rgba(0,0,0,0.35)0px,rgba(0,0,0,0.35)1px,transparent1px,transparent2px);
+      animation:imageNoise 1200ms steps(4,end) infinite;
+    }
+
+    @keyframes imageNoise{
+      0%{transform:translate(0,0);}
+      50%{transform:translate(1px,-1px);}
+      100%{transform:translate(0,0);}
+    }
+
+    .case-media figcaption{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      padding:4px 8px 6px;
+      font-size:11px;
+      color:var(--text-muted);
+      background:linear-gradient(90deg,rgba(0,0,0,0.9),transparent);
+    }
+
+    .cases-divider{
+      height:1px;
+      background-image:linear-gradient(90deg,rgba(181,255,47,0.6),rgba(181,255,47,0.0));
+      opacity:0.7;
+    }
+
+    /* CONTACTS */
+
+    .contacts-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+    }
+
+    .contact-card{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .contact-frame{
+      position:relative;
+      padding:12px 12px 10px;
+      border-radius:var(--radius-m);
+      border:1px solid var(--border-subtle);
+      background:
+        linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.8)),
+        repeating-linear-gradient(180deg,rgba(255,255,255,0.06)0px,rgba(255,255,255,0.02)1px,transparent1px,transparent3px);
+      overflow:hidden;
+      transition:border-color var(--transition-fast),box-shadow var(--transition-fast),transform var(--transition-fast);
+    }
+
+    .contact-frame::before{
+      content:"▶";
+      position:absolute;
+      right:10px;
+      top:10px;
+      font-size:10px;
+      color:var(--accent-soft);
+    }
+
+    .contact-frame::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:-100%;
+      height:40%;
+      background:linear-gradient(180deg,rgba(181,255,47,0.15),transparent);
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .contact-card:hover .contact-frame{
+      border-color:var(--accent-soft);
+      box-shadow:0 0 0 1px rgba(181,255,47,0.15);
+      transform:translateY(-1px);
+    }
+
+    .contact-card:hover .contact-frame::after{
+      opacity:1;
+      animation:contactScan 600ms ease-out;
+    }
+
+    @keyframes contactScan{
+      from{transform:translateY(0);}
+      to{transform:translateY(200%);}
+    }
+
+    .contact-label{
+      font-size:11px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:var(--accent-soft);
+      margin-bottom:6px;
+    }
+
+    .contact-value{
+      font-size:14px;
+      margin-bottom:4px;
+    }
+
+    .contact-meta{
+      font-size:12px;
+      color:var(--text-muted);
+    }
+
+    /* FOOTER */
+
+    .site-footer{
+      border-top:1px solid var(--border-subtle);
+      background:#050505;
+      padding:14px 0;
+      font-size:11px;
+      color:var(--text-muted);
+    }
+
+    .footer-inner{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:space-between;
+    }
+
+    .footer-meta{opacity:0.8;}
+
+    /* ADAPTIVE */
+
+    @media (max-width:900px){
+      .hero-inner{grid-template-columns:minmax(0,1fr);}
+      .hero-portrait{max-width:380px;margin:0 auto;order:-1;}
+      .about-grid{grid-template-columns:minmax(0,1fr);}
+      .case-body{grid-template-columns:minmax(0,1fr);}
+    }
+
+    @media (max-width:720px){
+      .header-inner{
+        flex-wrap:wrap;
+        gap:8px;
+        height:auto;
+        padding-top:8px;
+        padding-bottom:8px;
+      }
+      .site-nav{
+        width:100%;
+        justify-content:flex-end;
+        flex-wrap:wrap;
+      }
+      .hero{padding-top:52px;}
+    }
+
+    @media (max-width:520px){
+      .hero-actions{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .contacts-grid{grid-template-columns:minmax(0,1fr);}
+    }
+  </style>
 </head>
 <body class="is-loading">
-  <!-- Фоновый шум поверх всей страницы -->
   <div class="site-noise"></div>
 
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo-block">
-        <!-- ИМЯ / ЛОГО -->
         <span class="logo-mark">▣</span>
         <span class="logo-text">Имя Фамилия</span>
       </div>
@@ -41,21 +740,20 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <main>
+    <!-- HERO -->
     <section class="hero" id="top">
       <div class="container hero-inner">
         <div class="hero-text">
-          <!-- ИМЯ И СПЕЦИАЛИЗАЦИЯ -->
-          <p class="hero-label">PROFILE // ANALOG-PUNK MODE</p>
+          <p class="hero-label">PROFILE // ANALOG-PUNK PRODUCT MODE</p>
           <h1>
             Имя<br />
             Фамилия
           </h1>
-          <p class="hero-role">Специалист по [твоя специализация]</p>
-          <!-- КОРОТКИЙ СЛОГАН -->
+          <p class="hero-role">Product / методист цифровых продуктов и курсов</p>
           <p class="hero-tagline">
-            Помогаю [целевой аудитории] превращать шум в понятные решения: от стратегии до реализованных кейсов.
+            Помогаю авторам, школам и командам превращать разрозненные идеи в системные продукты:
+            от структуры и методологии до запущенных кейсов.
           </p>
 
           <div class="hero-actions">
@@ -63,64 +761,65 @@
               <span class="btn-label">Связаться со мной</span>
               <span class="btn-shadow" aria-hidden="true">Связаться со мной</span>
             </a>
-            <a href="#cases" class="link-inline">Смотреть кейсы ↓</a>
+            <a href="#cases" class="link-inline">Посмотреть кейсы ↓</a>
           </div>
         </div>
 
-        <!-- ПОРТРЕТ / ИЛЛЮСТРАЦИЯ -->
         <figure class="hero-portrait">
-          <!-- ЗАМЕНИ ЭТУ КАРТИНКУ НА СВОЮ -->
+          <!-- ПОКА ЗАГЛУШКА. Положи сюда своё монохромное фото -->
           <img src="assets/img/portrait-placeholder.jpg" alt="Монохромный портрет в стиле analog-punk" />
           <figcaption>Signal: stable // Noise: controlled</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ОБО МНЕ -->
+    <!-- ABOUT -->
     <section class="section" id="about">
       <div class="container">
         <header class="section-header">
           <h2>Обо мне</h2>
-          <p class="section-subtitle">Кто я и как думаю о работе</p>
+          <p class="section-subtitle">Кто я и как подхожу к продукту</p>
         </header>
 
         <div class="about-grid">
           <div class="about-text">
-            <!-- 3–5 ПРЕДЛОЖЕНИЙ О СЕБЕ -->
             <p>
-              Я — [роль/позиция], работаю с [тип клиентов или сфер] и помогаю им решать задачи на стыке
-              стратегии, визуала и цифровых продуктов. Собираю понятные, устойчивые решения
-              вместо визуального шума.
+              Я — product/методист, работаю с образовательными и цифровыми продуктами.
+              Помогаю авторам и командам собрать внятную структуру: от идеи и позиционирования
+              до понятного пути пользователя.
             </p>
             <p>
-              Люблю системы, прозрачные процессы и аккуратные интерфейсы. В работе комбинирую
-              цифровые инструменты и аналоговое мышление: заметки, схемы, черновики.
+              Моя оптика — системность и уважение к вниманию пользователя. Я люблю чистые интерфейсы,
+              честные обещания и курсы, которые можно пройти, а не только купить.
+            </p>
+            <p>
+              Работаю на стыке аналитики, методологии и дизайна: умею разложить хаос по полочкам,
+              вытащить из головы эксперта главное и упаковать это в адекватный формат.
             </p>
           </div>
 
           <div class="skills-panel">
             <h3 class="skills-title">Навыки / Стек</h3>
             <ul class="skills-list">
-              <!-- ДОБАВЬ / УДАЛИ ПУНКТЫ ПОД СЕБЯ -->
               <li class="skill-item">
                 <span class="skill-icon">◎</span>
-                <span class="skill-label">Стратегия и позиционирование</span>
+                <span class="skill-label">Продуктовая логика и позиционирование</span>
               </li>
               <li class="skill-item">
                 <span class="skill-icon">▥</span>
-                <span class="skill-label">UX / UI концепция</span>
+                <span class="skill-label">Методология курсов и программ</span>
               </li>
               <li class="skill-item">
                 <span class="skill-icon">▧</span>
-                <span class="skill-label">Дизайн лендингов и интерфейсов</span>
+                <span class="skill-label">Пользовательский путь, сценарии, CJM</span>
               </li>
               <li class="skill-item">
                 <span class="skill-icon">⇄</span>
-                <span class="skill-label">Аналитика и гипотезы</span>
+                <span class="skill-label">Лендинги и интерфейсы под задачу</span>
               </li>
               <li class="skill-item">
                 <span class="skill-icon">▤</span>
-                <span class="skill-label">Работа с командой / подрядчиками</span>
+                <span class="skill-label">Работа с командой и экспертами</span>
               </li>
             </ul>
           </div>
@@ -128,112 +827,109 @@
       </div>
     </section>
 
-    <!-- ЧЕМ МОГУ ПОМОЧЬ -->
+    <!-- SERVICES -->
     <section class="section section-alt" id="services">
       <div class="container">
         <header class="section-header">
           <h2>Чем могу помочь</h2>
-          <p class="section-subtitle">Форматы работы и типовые задачи</p>
+          <p class="section-subtitle">Форматы работы и типовые запросы</p>
         </header>
 
         <div class="services-grid">
-          <!-- КАРТОЧКИ УСЛУГ — НАСТРОЙ ПОД СЕБЯ -->
           <article class="service-card">
             <div class="service-icon">▣</div>
-            <h3>Лендинги «под задачу»</h3>
+            <h3>Структура продукта</h3>
             <p>
-              От идеи до структуры, прототипов и визуала. Сайт, который решает конкретную
-              бизнес-цель, а не просто «красиво выглядит».
+              Помогаю собрать концепцию и карту продукта: сегменты, ценностное предложение,
+              формат, модули, точки контакта. Из «хочу курс» в понятный план.
             </p>
           </article>
 
           <article class="service-card">
             <div class="service-icon">▦</div>
-            <h3>Продуктовая визуальная система</h3>
+            <h3>Методология курса</h3>
             <p>
-              Собираю визуальный язык проекта: цвета, типографика, паттерны, UI-компоненты,
-              чтобы всё работало как единое целое.
+              Прорабатываю логику обучения: цели, результаты, модули, уроки, практики и проверки.
+              Без лишнего контента и с фокусом на то, что человек реально делает.
             </p>
           </article>
 
           <article class="service-card">
             <div class="service-icon">▤</div>
-            <h3>Аудит текущего решения</h3>
+            <h3>Лендинг под продукт</h3>
             <p>
-              Разбор сайта или продукта: где теряется внимание, что мешает конверсии, что можно
-              поправить без полного редизайна.
+              Собираю лендинг, который объясняет продукт человеческим языком: кому, про что,
+              как устроено, зачем платить деньги. От структуры до визуальной части.
             </p>
           </article>
 
           <article class="service-card">
             <div class="service-icon">↯</div>
-            <h3>Дизайн для спецпроектов</h3>
+            <h3>Аудит и доработка</h3>
             <p>
-              Визуальные концепции для спецпроектов, кампаний и лимитированных запусков — когда
-              нужно чуть больше характера.
+              Разбираю уже существующий продукт или курс: где теряется ценность, куда
+              утекает внимание и что можно улучшить без полного пересбора.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- КЕЙСЫ -->
+    <!-- CASES -->
     <section class="section" id="cases">
       <div class="container">
         <header class="section-header">
           <h2>Кейсы</h2>
-          <p class="section-subtitle">Несколько историй, где шум стал системой</p>
+          <p class="section-subtitle">Примеры задач и результатов</p>
         </header>
 
         <div class="cases-list">
-          <!-- КЕЙС 1 -->
           <article class="case-item">
             <header class="case-header">
-              <h3>Кейс #1 — лендинг для онлайн-курса</h3>
-              <p class="case-tagline">Рост конверсии с рекламного трафика и ясная структура оффера.</p>
+              <h3>Кейс #1 — Пересборка курса по профессии</h3>
+              <p class="case-tagline">Из энциклопедии в понятную траекторию для новичка.</p>
             </header>
 
             <div class="case-body">
               <div class="case-text">
-                <p><strong>Задача.</strong> У заказчика был курс с хорошими отзывами, но сайт выглядел как
-                  набор несвязанных блоков. Сложно понять, зачем курс и для кого он.</p>
-                <p><strong>Что сделал.</strong> Пересобрал структуру страницы, выделил ключевые смыслы, добавил
-                  понятные сценарии для разных аудиторий, выстроил визуальную иерархию.</p>
-                <p><strong>Результат.</strong> Конверсия из клика в заявку выросла на ~25%, уменьшилось количество
-                  уточняющих вопросов в личных сообщениях.</p>
+                <p><strong>Задача.</strong> У школы был большой курс «всё обо всём», на котором
+                  люди терялись уже к середине программы. Много теории, мало опорных действий.</p>
+                <p><strong>Что сделал(а).</strong> Пересобрал(а) программу под конкретный результат:
+                  выделили ключевые навыки, сократили лишние блоки, добавили практики и чек-листы,
+                  настроили ритм домашних заданий.</p>
+                <p><strong>Результат.</strong> Увеличилась доходимость до финала, снизилось количество
+                  запросов в поддержку «я ничего не понимаю», выросло количество отзывов с формулировкой
+                  «стала понимать, что делать по шагам».</p>
               </div>
 
               <figure class="case-media">
-                <!-- ЗАМЕНИ НА СКРИН СВОЕГО ПРОЕКТА -->
-                <img src="assets/img/case-01-placeholder.jpg" alt="Скриншот лендинга для онлайн-курса" />
-                <figcaption>Фрагмент экрана // шум сглажен, акценты понятны</figcaption>
+                <img src="assets/img/case-01-placeholder.jpg" alt="Схема структуры обновлённого курса" />
+                <figcaption>Фрагмент структуры модуля // из хаоса в читаемую схему</figcaption>
               </figure>
             </div>
           </article>
 
           <div class="cases-divider"></div>
 
-          <!-- КЕЙС 2 -->
           <article class="case-item">
             <header class="case-header">
-              <h3>Кейс #2 — визуальный язык для сервиса</h3>
-              <p class="case-tagline">От разрозненных интерфейсов к цельной системе.</p>
+              <h3>Кейс #2 — Лендинг для нового продукта</h3>
+              <p class="case-tagline">Один экран вместо трёх презентаций и голосовых на 15 минут.</p>
             </header>
 
             <div class="case-body">
               <div class="case-text">
-                <p><strong>Задача.</strong> У продукта было несколько интерфейсов, собранных разными дизайнерами
-                  на разных этапах. Никакой единой логики и ощущения бренда.</p>
-                <p><strong>Что сделал.</strong> Проанализировал текущие экраны, собрал UI-кисть, настроил сетку,
-                  цветовые токены, типографику и базовые компоненты.</p>
-                <p><strong>Результат.</strong> Команда стала быстрее собирать новые экраны, пользователи отметили,
-                  что «сервис стал понятнее и ровнее».</p>
+                <p><strong>Задача.</strong> Эксперт запускал новый продукт, но объяснял его
+                  только в личных сообщениях. Клиенты путались в форматах и не понимали, что именно покупают.</p>
+                <p><strong>Что сделал(а).</strong> Собрал(а) структуру лендинга: кто целевая аудитория,
+                  какую боль закрываем, как выглядит путь, какие есть форматы участия, что человек получает на выходе.</p>
+                <p><strong>Результат.</strong> Лендинг стал «единым источником правды»: на него начали ссылаться из всех каналов,
+                  сократилось время на продажу, стало проще делегировать ответы менеджеру.</p>
               </div>
 
               <figure class="case-media">
-                <!-- ЗАМЕНИ НА СКРИН СВОЕГО ПРОЕКТА -->
-                <img src="assets/img/case-02-placeholder.jpg" alt="Скриншот интерфейсов сервиса" />
-                <figcaption>Фрагменты интерфейса // единый язык вместо коллажа</figcaption>
+                <img src="assets/img/case-02-placeholder.jpg" alt="Фрагмент лендинга продукта" />
+                <figcaption>Фрагмент лендинга // акценты, а не просто блоки</figcaption>
               </figure>
             </div>
           </article>
@@ -241,48 +937,44 @@
       </div>
     </section>
 
-    <!-- КОНТАКТЫ -->
+    <!-- CONTACTS -->
     <section class="section section-alt" id="contacts">
       <div class="container">
         <header class="section-header">
           <h2>Контакты</h2>
-          <p class="section-subtitle">Выбор канала — за тобой</p>
+          <p class="section-subtitle">Выбери удобный канал — я на связи</p>
         </header>
 
         <div class="contacts-grid">
-          <!-- Email -->
           <a class="contact-card" href="mailto:you@example.com">
             <div class="contact-frame">
               <div class="contact-label">EMAIL // PRIMARY CHANNEL</div>
               <div class="contact-value">you@example.com</div>
-              <div class="contact-meta">Ответ обычно в течение 24 часов</div>
+              <div class="contact-meta">Для развернутых запросов и брифов</div>
             </div>
           </a>
 
-          <!-- Telegram -->
           <a class="contact-card" href="https://t.me/yourusername" target="_blank" rel="noopener">
             <div class="contact-frame">
               <div class="contact-label">TELEGRAM // DIRECT LINE</div>
               <div class="contact-value">@yourusername</div>
-              <div class="contact-meta">Для быстрых вопросов и рабочих переписок</div>
+              <div class="contact-meta">Быстрые вопросы и рабочие чаты</div>
             </div>
           </a>
 
-          <!-- WhatsApp -->
           <a class="contact-card" href="https://wa.me/70000000000" target="_blank" rel="noopener">
             <div class="contact-frame">
               <div class="contact-label">WHATSAPP // ALT CHANNEL</div>
               <div class="contact-value">+7 000 000-00-00</div>
-              <div class="contact-meta">Только по делу, без рассылок 🙃</div>
+              <div class="contact-meta">Если удобнее мессенджер без никнеймов</div>
             </div>
           </a>
 
-          <!-- GitHub / LinkedIn / Behance -->
           <a class="contact-card" href="https://github.com/yourprofile" target="_blank" rel="noopener">
             <div class="contact-frame">
-              <div class="contact-label">GITHUB // CODE TRACE</div>
+              <div class="contact-label">GITHUB // PRODUCT TRACE</div>
               <div class="contact-value">github.com/yourprofile</div>
-              <div class="contact-meta">Репозитории, pet-проекты, эксперименты</div>
+              <div class="contact-meta">Если есть кодовые или ноу-код проекты</div>
             </div>
           </a>
 
@@ -290,7 +982,7 @@
             <div class="contact-frame">
               <div class="contact-label">LINKEDIN // NETWORK</div>
               <div class="contact-value">linkedin.com/in/yourprofile</div>
-              <div class="contact-meta">Профессиональные контакты и опыт</div>
+              <div class="contact-meta">Формальный профиль и опыт</div>
             </div>
           </a>
 
@@ -298,7 +990,7 @@
             <div class="contact-frame">
               <div class="contact-label">BEHANCE // VISUAL FEED</div>
               <div class="contact-value">behance.net/yourprofile</div>
-              <div class="contact-meta">Подборка визуальных проектов</div>
+              <div class="contact-meta">Если есть визуальные или UI-кейсы</div>
             </div>
           </a>
         </div>
@@ -309,10 +1001,29 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>© <span id="js-year"></span> Имя Фамилия</span>
-      <span class="footer-meta">Built in analog-punk minimal // HTML · CSS · JS</span>
+      <span class="footer-meta">Analog-punk minimal // HTML · CSS · JS</span>
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.remove('is-loading');
+
+      const yearEl = document.getElementById('js-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      const links = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const targetId = link.getAttribute('href').slice(1);
+          const target = document.getElementById(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
